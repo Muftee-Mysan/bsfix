@@ -1,0 +1,167 @@
+---
+import { u } from '../config';
+import Base from '../layouts/Base.astro';
+import UnitIllustration from '../components/UnitIllustration.astro';
+
+const faqs = [
+  {
+    q: 'Does it smell?',
+    a: 'The unit is fully enclosed, and trained operators keep it clean. Smell comes from waste that is mismanaged, which is why we train site staff and visit every month to service the unit. If anything goes wrong, tell us and we fix it.',
+  },
+  {
+    q: 'Will flies escape onto my site?',
+    a: 'The unit is fully enclosed. Adult Black Soldier Flies are not house pests either: they do not bite, sting or feed, and they do not come looking for your food.',
+    todo: 'TODO: confirm with team how adults are contained or released',
+  },
+  {
+    q: 'What about heavy rain and flooding?',
+    a: 'Units are raised and covered, with drainage, shade and collection of the liquid that drains from the waste. They are built to be moved, so if flooding is forecast we can move the unit to higher ground.',
+  },
+  {
+    q: 'How much space does it need?',
+    a: 'A unit is about 5 ft × 5 ft × 3 ft. You need that footprint plus room to walk around it, ideally under cover and close to where food waste is collected.',
+  },
+  {
+    q: 'How much does it cost?',
+    a: 'Contact us — pricing is set after our 2027 pilot, once we know the real running costs.',
+    link: { href: u('/host-a-unit/'), label: 'Ask about hosting a unit' },
+  },
+];
+---
+
+<Base
+  title="How it works"
+  description="How Black Soldier Fly larvae turn food waste into compost and feed inside a BSFix unit: life cycle, what goes in and out, who runs it, and answers about smell, flies and rain."
+>
+  <section class="section">
+    <div class="wrap">
+      <h1>How it works</h1>
+      <p class="lede">
+        Black Soldier Fly larvae are very good at one job: eating food waste. A BSFix unit gives them a clean, enclosed place to do it, right where the waste is produced.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="cycle">
+    <div class="wrap split">
+      <div>
+        <h2 id="cycle">The Black Soldier Fly life cycle</h2>
+        <ol class="cycle-list">
+          <li><strong>Egg.</strong> Adult flies lay eggs in batches near food.</li>
+          <li><strong>Larva.</strong> The larvae hatch and feed on food waste. This is the stage that does the work, and the stage farmers want as feed.</li>
+          <li><strong>Pupa.</strong> Fully grown larvae stop eating and change into flies.</li>
+          <li><strong>Adult fly.</strong> The adult lives only to mate and lay eggs, then the cycle starts again.</li>
+        </ol>
+        <p class="reassure">
+          Adult Black Soldier Flies do not bite, sting or feed. They are not house pests, and they are not known disease carriers.
+        </p>
+      </div>
+      <figure class="cycle-fig">
+        <svg viewBox="0 0 300 300" role="img" aria-labelledby="cycle-title">
+          <title id="cycle-title">Life cycle diagram: egg, then larva, then pupa, then adult fly, which lays eggs again.</title>
+          <circle cx="150" cy="150" r="96" fill="none" stroke="#CFE3B0" stroke-width="10" />
+          <path d="M150 54 a96 96 0 0 1 96 96" fill="none" stroke="#2C7A8C" stroke-width="4" marker-end="url(#arr)" />
+          <path d="M246 150 a96 96 0 0 1 -96 96" fill="none" stroke="#2C7A8C" stroke-width="4" marker-end="url(#arr)" />
+          <path d="M150 246 a96 96 0 0 1 -96 -96" fill="none" stroke="#2C7A8C" stroke-width="4" marker-end="url(#arr)" />
+          <path d="M54 150 a96 96 0 0 1 96 -96" fill="none" stroke="#2C7A8C" stroke-width="4" marker-end="url(#arr)" />
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2C7A8C" /></marker>
+          </defs>
+          <!-- egg -->
+          <g transform="translate(150 54)"><circle r="30" fill="#F5F7F2" stroke="#2A2119" stroke-width="2" /><ellipse cx="-6" cy="2" rx="5" ry="7" fill="#EFE6CF" stroke="#5B4636" /><ellipse cx="5" cy="-2" rx="5" ry="7" fill="#EFE6CF" stroke="#5B4636" /></g>
+          <!-- larva -->
+          <g transform="translate(246 150)"><circle r="30" fill="#F5F7F2" stroke="#2A2119" stroke-width="2" /><rect x="-16" y="-5" width="32" height="10" rx="5" fill="#EFE6CF" stroke="#5B4636" /></g>
+          <!-- pupa -->
+          <g transform="translate(150 246)"><circle r="30" fill="#F5F7F2" stroke="#2A2119" stroke-width="2" /><rect x="-15" y="-5" width="30" height="10" rx="5" fill="#3A2E24" /></g>
+          <!-- adult -->
+          <g transform="translate(54 150)"><circle r="30" fill="#F5F7F2" stroke="#2A2119" stroke-width="2" /><ellipse cx="0" cy="4" rx="5" ry="13" fill="#2A2119" /><path d="M0 -2 q-18 -12 -16 4 q8 2 16 -4 z M0 -2 q18 -12 16 4 q-8 2 -16 -4 z" fill="#2C7A8C" opacity="0.85" /></g>
+          <text x="150" y="20" text-anchor="middle" class="lbl">Egg</text>
+          <text x="290" y="196" text-anchor="end" class="lbl">Larva</text>
+          <text x="150" y="296" text-anchor="middle" class="lbl">Pupa</text>
+          <text x="10" y="196" class="lbl">Adult</text>
+        </svg>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="inout">
+    <div class="wrap">
+      <h2 id="inout">What goes in, what comes out</h2>
+      <div class="inout">
+        <div>
+          <h3>Goes in</h3>
+          <p>Food waste from kitchens, canteens and markets. Each unit is designed to take up to 50 kg a day.</p>
+        </div>
+        <div>
+          <h3>Comes out</h3>
+          <p><strong>Compost</strong> for gardens and plants on your site.</p>
+          <p><strong>Larvae</strong>, rich in protein, collected and passed on to local chicken and fish farms as feed.</p>
+        </div>
+        <div>
+          <h3>Can’t go in</h3>
+          <p>Plastics, wood, bones.</p>
+          <span class="todo">TODO: confirm this list with the team</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="runs">
+    <div class="wrap split">
+      <UnitIllustration />
+      <div>
+        <h2 id="runs">Who runs it</h2>
+        <p>
+          The unit’s four compartments keep feeding larvae, grown larvae and finished compost apart, so harvesting is simple.
+        </p>
+        <p>
+          It is built so that a labourer with no special training can load, harvest, clean and move it. The BSFix team trains your staff on site and then visits every month to service the unit and send you an impact report.
+        </p>
+        <p><a href={u('/host-a-unit/')}>What hosting a unit involves</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="faq">
+    <div class="wrap">
+      <h2 id="faq">Questions people ask</h2>
+      <div class="faq">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <div class="faq__a">
+              <p>{f.a}</p>
+              {f.todo && <span class="todo">{f.todo}</span>}
+              {f.link && <p><a href={f.link.href}>{f.link.label}</a></p>}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .cycle-list { padding-left: 1.3rem; }
+  .cycle-list li { margin-bottom: 0.6rem; }
+  .reassure { background: var(--leaf); padding: 1rem 1.1rem; border-radius: var(--radius); font-weight: 700; }
+  .cycle-fig { margin: 0; }
+  .cycle-fig svg { max-width: 22rem; margin-inline: auto; }
+  .lbl { font: 700 15px var(--font-body); fill: #2A2119; }
+
+  .inout { display: grid; gap: 1.5rem; }
+  @media (min-width: 48rem) { .inout { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
+  .inout > div { border-top: 4px solid var(--green); padding-top: 1rem; }
+  .inout > div:last-child { border-top-color: var(--compost); }
+
+  .faq { max-width: 48rem; border-top: 1px solid var(--line); }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq summary {
+    cursor: pointer; font-weight: 700; font-size: var(--step-1); font-family: var(--font-head);
+    padding: 1rem 2rem 1rem 0; position: relative; list-style: none;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; position: absolute; right: 0.25rem; top: 0.9rem; font-size: 1.5rem; color: var(--teal-dark); }
+  .faq details[open] summary::after { content: '–'; }
+  .faq__a { padding-bottom: 1rem; }
+</style>

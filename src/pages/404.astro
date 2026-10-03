@@ -1,0 +1,13 @@
+---
+import { u } from '../config';
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Page not found" description="This page does not exist on the BSFix website.">
+  <section class="section">
+    <div class="wrap">
+      <h1>This page isn’t here</h1>
+      <p class="lede">Even the larvae couldn’t find it. Try the <a href={u('/')}>home page</a> or <a href={u('/host-a-unit/')}>ask about hosting a unit</a>.</p>
+    </div>
+  </section>
+</Base>

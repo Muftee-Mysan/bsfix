@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import EnquiryForm from '../components/EnquiryForm.astro';
+import WhatsAppLink from '../components/WhatsAppLink.astro';
+---
+
+<Base
+  title="Larvae for farmers"
+  description="Chicken and fish farmers near Colombo: BSFix is looking for farms to receive and test Black Soldier Fly larvae as a protein-rich supplementary feed."
+>
+  <section class="section">
+    <div class="wrap split split--wide-left">
+      <div>
+        <h1>Larvae for your chickens and fish</h1>
+        <p class="lede">
+          Black Soldier Fly larvae are a protein-rich supplementary feed for chickens and fish. Our units produce them from food waste.
+        </p>
+        <p>
+          During the project we are looking for farms near Colombo to receive larvae and test them as feed. Tell us about your farm and we will contact you when larvae are available.
+        </p>
+        <h2>What we ask of you</h2>
+        <ul>
+          <li>Try the larvae with your animals.</li>
+          <li>Tell us honestly how it went, so we can learn what farmers need.</li>
+        </ul>
+        <p class="todo-block">TODO: confirm with team when larvae will first be available (Phase A pilot, Jul–Sep 2027?), quantities, and whether there is any charge during the project.</p>
+        <WhatsAppLink text="Hi BSFix, I'm a farmer and I'm interested in larvae for feed." label="Ask on WhatsApp" />
+      </div>
+      <div class="form-box">
+        <h2>Register your farm</h2>
+        <EnquiryForm kind="farmer" submitLabel="Register my farm" sentLabel="Farm registered" />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  ul { padding-left: 1.2rem; }
+  .form-box { background: var(--white); padding: 1.25rem; border-radius: var(--radius); border: 1px solid var(--line); align-self: start; }
+</style>

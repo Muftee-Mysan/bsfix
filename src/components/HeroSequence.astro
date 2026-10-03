@@ -1,0 +1,263 @@
+---
+// "Follow 50 kg of food waste": the site's one orchestrated motion moment.
+// Without JS it renders as a plain ordered list with the final scene shown.
+const steps = [
+  {
+    title: 'Waste in',
+    text: '50 kg of food scraps from a kitchen or canteen go into the unit on site, instead of a skip.',
+  },
+  {
+    title: 'Larvae feed',
+    text: 'Black Soldier Fly larvae eat through the waste inside the closed, 4-tier unit. This takes about two weeks.',
+  },
+  {
+    title: 'Compost and larvae',
+    text: 'What is left is compost, plus grown larvae rich in protein. How much of each: measured in our 2027 pilot.',
+  },
+  {
+    title: 'Garden and farm',
+    text: 'Compost feeds gardens. Larvae go to local chicken and fish farms as feed. Up to 50 kg kept out of landfill.',
+  },
+];
+---
+
+<div class="seq" data-seq data-active="4">
+  <p class="seq__title" id="seq-title">Follow 50 kg of food waste</p>
+
+  <div class="seq__stage">
+    <svg viewBox="0 0 400 230" role="img" aria-labelledby="seq-title seq-svgdesc">
+      <desc id="seq-svgdesc">Illustration: food scraps go into a four-tier unit, larvae feed for about two weeks, compost and larvae come out, and they go to a garden and a farm.</desc>
+      <rect width="400" height="230" fill="#2A2119" />
+      <rect y="196" width="400" height="34" fill="#3A2E24" />
+
+      <!-- Scene 1: waste in -->
+      <g class="scene" data-scene="1">
+        <g class="drop">
+          <circle cx="120" cy="58" r="9" fill="#E8A33D" />
+          <circle cx="140" cy="44" r="7" fill="#9BC46A" />
+          <rect x="150" y="60" width="16" height="9" rx="3" fill="#D9C27A" transform="rotate(-20 158 64)" />
+          <circle cx="104" cy="40" r="6" fill="#C4553A" />
+          <path d="M128 76 q8 -10 18 0 z" fill="#7FB04F" />
+        </g>
+        <path d="M80 100 h110 l-12 96 h-86 z" fill="#5B4636" />
+        <rect x="74" y="92" width="122" height="12" rx="3" fill="#6E5644" />
+        <text x="135" y="160" text-anchor="middle" class="svg-big">50 kg</text>
+        <text x="135" y="180" text-anchor="middle" class="svg-small">food waste</text>
+        <g transform="translate(250 60)" opacity="0.85">
+          <rect width="100" height="136" rx="4" fill="none" stroke="#CFE3B0" stroke-width="2" stroke-dasharray="5 5" />
+          <text x="50" y="74" text-anchor="middle" class="svg-small">BSFix unit</text>
+        </g>
+      </g>
+
+      <!-- Scene 2: larvae feed -->
+      <g class="scene" data-scene="2">
+        <g transform="translate(70 42)">
+          <rect width="150" height="154" rx="4" fill="#3A2E24" stroke="#CFE3B0" stroke-width="2" />
+          {[0, 1, 2, 3].map((i) => (
+            <g transform={`translate(8 ${8 + i * 36})`}>
+              <rect width="134" height="30" rx="2" fill="#5B4636" />
+              <g class="wiggle" style={`animation-delay:${i * 0.2}s`}>
+                <rect x="16" y="13" width="12" height="5" rx="2.5" fill="#EFE6CF" />
+                <rect x="48" y="9" width="12" height="5" rx="2.5" fill="#EFE6CF" />
+                <rect x="82" y="15" width="12" height="5" rx="2.5" fill="#EFE6CF" />
+                <rect x="110" y="10" width="12" height="5" rx="2.5" fill="#EFE6CF" />
+              </g>
+            </g>
+          ))}
+        </g>
+        <g transform="translate(262 70)">
+          <circle cx="44" cy="44" r="40" fill="none" stroke="#2C7A8C" stroke-width="6" />
+          <path class="clock-arc" d="M44 4 a40 40 0 1 1 -0.1 0" fill="none" stroke="#CFE3B0" stroke-width="6" stroke-linecap="round" pathLength="100" />
+          <text x="44" y="42" text-anchor="middle" class="svg-big">~2</text>
+          <text x="44" y="62" text-anchor="middle" class="svg-small">weeks</text>
+        </g>
+      </g>
+
+      <!-- Scene 3: compost and larvae -->
+      <g class="scene" data-scene="3">
+        <path d="M50 196 q30 -78 120 -78 q70 0 70 78 z" fill="#4A3524" />
+        <circle cx="110" cy="166" r="3" fill="#6B5240" /><circle cx="150" cy="150" r="3" fill="#6B5240" /><circle cx="190" cy="172" r="3" fill="#6B5240" /><circle cx="132" cy="182" r="2.5" fill="#6B5240" />
+        <text x="145" y="106" text-anchor="middle" class="svg-small">compost</text>
+        <g transform="translate(266 140)">
+          <rect width="96" height="56" rx="4" fill="#2C7A8C" />
+          <rect x="6" y="6" width="84" height="20" rx="3" fill="#3A2E24" />
+          <rect x="16" y="12" width="12" height="5" rx="2.5" fill="#EFE6CF" />
+          <rect x="40" y="15" width="12" height="5" rx="2.5" fill="#EFE6CF" />
+          <rect x="64" y="11" width="12" height="5" rx="2.5" fill="#EFE6CF" />
+          <text x="48" y="-12" text-anchor="middle" class="svg-small">larvae</text>
+        </g>
+      </g>
+
+      <!-- Scene 4: garden and farm -->
+      <g class="scene" data-scene="4">
+        <g transform="translate(40 96)">
+          <rect x="0" y="80" width="150" height="20" fill="#4A3524" />
+          <path d="M30 80 v-46" stroke="#7FB04F" stroke-width="4" />
+          <path d="M30 50 q-22 -6 -26 -28 q22 4 26 28 z" fill="#9BC46A" />
+          <path d="M30 40 q20 -8 30 -30 q-24 2 -30 30 z" fill="#CFE3B0" />
+          <path d="M90 80 v-60" stroke="#7FB04F" stroke-width="4" />
+          <path d="M90 40 q-26 -4 -32 -30 q26 2 32 30 z" fill="#CFE3B0" />
+          <path d="M90 28 q24 -10 34 -28 q-26 0 -34 28 z" fill="#9BC46A" />
+          <circle cx="90" cy="14" r="7" fill="#E8A33D" />
+          <text x="75" y="122" text-anchor="middle" class="svg-small">garden</text>
+        </g>
+        <g transform="translate(250 112)">
+          <!-- chicken -->
+          <ellipse cx="34" cy="50" rx="30" ry="22" fill="#EFE6CF" />
+          <circle cx="60" cy="28" r="13" fill="#EFE6CF" />
+          <path d="M72 28 l10 4 -10 4 z" fill="#E8A33D" />
+          <path d="M54 15 q4 -9 8 0 q4 -9 8 2" fill="#C4553A" />
+          <circle cx="63" cy="25" r="2" fill="#2A2119" />
+          <path d="M26 72 v12 M42 72 v12" stroke="#E8A33D" stroke-width="3" />
+          <!-- fish -->
+          <g transform="translate(92 34)">
+            <path d="M0 18 q22 -22 44 0 q-22 22 -44 0 z" fill="#2C7A8C" />
+            <path d="M44 18 l14 -12 v24 z" fill="#2C7A8C" />
+            <circle cx="10" cy="15" r="2" fill="#F5F7F2" />
+          </g>
+          <text x="70" y="106" text-anchor="middle" class="svg-small">farm feed</text>
+        </g>
+      </g>
+    </svg>
+    <div class="seq__rail" aria-hidden="true"><span></span></div>
+  </div>
+
+  <ol class="seq__steps">
+    {steps.map((s, i) => (
+      <li>
+        <button type="button" data-step={i + 1} aria-controls="seq-panel">
+          <span class="seq__num">{i + 1}</span>
+          {s.title}
+        </button>
+        <p class="seq__desc">{s.text}</p>
+      </li>
+    ))}
+  </ol>
+  <p class="seq__panel" id="seq-panel" hidden></p>
+  <div class="seq__controls" hidden>
+    <button type="button" class="seq__play" data-play>Pause</button>
+    <span class="seq__note">All quantities are “up to” or targets. Real yields are measured in our 2027 pilot.</span>
+  </div>
+</div>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-seq]');
+  if (root) {
+    const steps = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-step]'));
+    const descs = Array.from(root.querySelectorAll<HTMLElement>('.seq__desc'));
+    const panel = root.querySelector<HTMLElement>('.seq__panel')!;
+    const controls = root.querySelector<HTMLElement>('.seq__controls')!;
+    const play = root.querySelector<HTMLButtonElement>('[data-play]')!;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let timer: number | undefined;
+
+    const show = (n: number, fromUser = false) => {
+      root.dataset.active = String(n);
+      steps.forEach((b, i) => b.setAttribute('aria-current', i + 1 === n ? 'step' : 'false'));
+      panel.textContent = descs[n - 1].textContent;
+      panel.setAttribute('aria-live', fromUser ? 'polite' : 'off');
+    };
+    const stop = (label = 'Replay') => {
+      window.clearInterval(timer);
+      timer = undefined;
+      play.textContent = label;
+    };
+    const start = () => {
+      let n = 1;
+      show(n);
+      play.textContent = 'Pause';
+      timer = window.setInterval(() => {
+        n += 1;
+        show(n);
+        if (n >= steps.length) stop();
+      }, 3200);
+    };
+
+    root.classList.add('is-enhanced');
+    panel.hidden = false;
+    controls.hidden = false;
+    steps.forEach((b) =>
+      b.addEventListener('click', () => {
+        stop();
+        show(Number(b.dataset.step), true);
+      }),
+    );
+    play.addEventListener('click', () => (timer ? stop('Play again') : start()));
+
+    if (reduce) {
+      show(1);
+      play.textContent = 'Play';
+    } else {
+      start();
+    }
+  }
+</script>
+
+<style>
+  .seq { color: var(--rain); background: var(--soil); border-radius: 10px; padding: 1.1rem; }
+  .seq__title { font-family: var(--font-head); font-weight: 650; font-size: 1.3rem; margin: 0 0 0.75rem; color: var(--white); }
+  .seq__stage { position: relative; }
+  .seq__stage svg { width: 100%; border-radius: 6px; }
+  .svg-big { font: 700 22px var(--font-head); fill: #f5f7f2; }
+  .svg-small { font: 700 13px var(--font-body); fill: #cfe3b0; }
+
+  .scene { opacity: 0; transition: opacity 0.5s ease; }
+  .seq[data-active='1'] .scene[data-scene='1'],
+  .seq[data-active='2'] .scene[data-scene='2'],
+  .seq[data-active='3'] .scene[data-scene='3'],
+  .seq[data-active='4'] .scene[data-scene='4'] { opacity: 1; }
+
+  .seq[data-active='1'] .drop { animation: drop 1.4s ease-in both; }
+  @keyframes drop { from { transform: translateY(-40px); opacity: 0; } to { transform: none; opacity: 1; } }
+  .wiggle { animation: wiggle 1.2s ease-in-out infinite alternate; }
+  @keyframes wiggle { from { transform: translateX(-3px); } to { transform: translateX(3px); } }
+  .seq[data-active='2'] .clock-arc { animation: clock 2.8s ease-out both; }
+  .clock-arc { stroke-dasharray: 100; stroke-dashoffset: 0; }
+  @keyframes clock { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+
+  .seq__rail { height: 5px; background: #4a3b2d; border-radius: 3px; margin-top: 0.75rem; overflow: hidden; }
+  .seq__rail span {
+    display: block; height: 100%; width: 100%;
+    background: linear-gradient(90deg, #2C7A8C, #3f9a86, #1F6B4A, #CFE3B0);
+    transform-origin: left; transition: transform 0.6s ease;
+  }
+  .seq[data-active='1'] .seq__rail span { transform: scaleX(0.25); }
+  .seq[data-active='2'] .seq__rail span { transform: scaleX(0.5); }
+  .seq[data-active='3'] .seq__rail span { transform: scaleX(0.75); }
+
+  .seq__steps { list-style: none; padding: 0; margin: 0.9rem 0 0; display: grid; gap: 0.5rem; max-width: none; }
+  .seq__steps button {
+    all: unset; box-sizing: border-box; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;
+    font-weight: 700; font-size: 0.95rem; min-height: 44px; padding: 0.35rem 0.6rem; border-radius: 6px; width: 100%;
+    color: #e9e4dc;
+  }
+  .seq__steps button:focus-visible { outline: 3px solid var(--leaf); outline-offset: 2px; }
+  .seq__num {
+    flex: none; display: inline-grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%;
+    border: 2px solid var(--leaf); font-size: 0.85rem;
+  }
+  .seq__steps button[aria-current='step'] { background: var(--leaf); color: var(--soil); }
+  .seq__steps button[aria-current='step'] .seq__num { background: var(--soil); color: var(--leaf); border-color: var(--soil); }
+  .seq__desc { margin: 0.2rem 0 0.6rem 2.7rem; font-size: 0.95rem; color: #d8d2c8; }
+
+  .seq.is-enhanced .seq__steps { grid-template-columns: 1fr 1fr; }
+  .seq.is-enhanced .seq__desc { display: none; }
+  .seq__panel { margin: 0.9rem 0 0; min-height: 4.8em; font-size: 1rem; color: var(--white); }
+  .seq__controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; margin-top: 0.4rem; }
+  .seq__controls[hidden] { display: none; }
+  .seq__play {
+    font: 700 0.9rem var(--font-body); color: var(--leaf); background: transparent;
+    border: 2px solid var(--leaf); border-radius: 6px; min-height: 40px; padding: 0.3rem 0.9rem; cursor: pointer;
+  }
+  .seq__play:focus-visible { outline: 3px solid var(--white); outline-offset: 2px; }
+  .seq__note { font-size: 0.8125rem; color: #b9b0a4; }
+
+  @media (min-width: 30rem) {
+    .seq.is-enhanced .seq__steps { grid-template-columns: repeat(4, 1fr); }
+    .seq.is-enhanced .seq__steps button { flex-direction: column; text-align: center; gap: 0.3rem; padding: 0.5rem 0.3rem; font-size: 0.875rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wiggle, .drop, .clock-arc { animation: none !important; }
+  }
+</style>

@@ -1,0 +1,30 @@
+---
+// Simple schematic of a BSFix unit: a compact frame with 4 stacked compartments.
+// Kept deliberately generic: the per-tier layout is finalised in the design-and-build phase.
+---
+
+<figure class="unit">
+  <svg viewBox="0 0 320 260" role="img" aria-labelledby="unit-title">
+    <title id="unit-title">Schematic of a BSFix unit: a compact frame holding four stacked compartments, with a lid on top and legs below.</title>
+    <rect x="40" y="28" width="240" height="14" rx="3" fill="#1F6B4A" />
+    <rect x="48" y="42" width="224" height="176" fill="#F5F7F2" stroke="#2A2119" stroke-width="3" />
+    {[0, 1, 2, 3].map((i) => (
+      <g transform={`translate(56 ${50 + i * 42})`}>
+        <rect width="208" height="34" rx="2" fill={i % 2 ? '#E6F0D8' : '#CFE3B0'} stroke="#2A2119" stroke-width="1.5" />
+        <rect x="88" y="13" width="32" height="8" rx="4" fill="#2A2119" />
+        <text x="12" y="22" class="t">Tier {i + 1}</text>
+      </g>
+    ))}
+    <rect x="56" y="218" width="12" height="28" fill="#2A2119" />
+    <rect x="252" y="218" width="12" height="28" fill="#2A2119" />
+    <rect x="20" y="246" width="280" height="4" rx="2" fill="#5B4636" />
+  </svg>
+  <figcaption>About 5 ft × 5 ft × 3 ft, with 4 compartments. Low-tech, built by local fabricators.</figcaption>
+</figure>
+
+<style>
+  .unit { margin: 0; }
+  .unit svg { width: 100%; max-width: 26rem; margin-inline: auto; }
+  .t { font: 700 13px var(--font-body); fill: #2A2119; }
+  figcaption { text-align: center; color: var(--compost); font-size: 0.9375rem; margin-top: 0.5rem; }
+</style>

@@ -1,0 +1,4 @@
+{
+  "_comment": "Deployment sites. Add one object per site, e.g. { \"name\": \"...\", \"type\": \"market\", \"area\": \"Colombo 07\", \"from\": \"2028-01\", \"to\": \"2028-03\", \"status\": \"planned\" }. Site names are TODO until agreed.",
+  "sites": []
+}

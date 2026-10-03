@@ -1,0 +1,40 @@
+---
+import { phases, site } from '../config';
+const currentIndex = phases.findIndex((p) => p.id === site.currentPhase);
+---
+
+<ol class="timeline">
+  {phases.map((p, i) => {
+    const state = currentIndex === -1 ? (i === 0 ? 'next' : 'later') : i < currentIndex ? 'done' : i === currentIndex ? 'now' : 'later';
+    return (
+      <li class:list={['timeline__item', `is-${state}`]} aria-current={state === 'now' ? 'step' : undefined}>
+        <span class="timeline__dot" aria-hidden="true"></span>
+        <p class="timeline__dates">{p.dates}</p>
+        <h3>{p.name}</h3>
+        <p>{p.what}</p>
+        {state === 'now' && <span class="tag tag--measured">Happening now</span>}
+        {state === 'next' && <span class="tag tag--target">Starts first</span>}
+        {state === 'done' && <span class="tag tag--target">Done</span>}
+      </li>
+    );
+  })}
+</ol>
+
+<style>
+  .timeline { list-style: none; padding: 0; margin: 2rem 0 0; position: relative; display: grid; gap: 1.75rem; max-width: none; }
+  .timeline::before { content: ''; position: absolute; left: 9px; top: 6px; bottom: 6px; width: 3px; background: var(--line); }
+  .timeline__item { position: relative; padding-left: 2.5rem; }
+  .timeline__item h3 { margin-bottom: 0.25rem; }
+  .timeline__item p { margin-bottom: 0.4rem; }
+  .timeline__dates { font-weight: 700; color: var(--teal-dark); }
+  .timeline__dot { position: absolute; left: 0; top: 4px; width: 21px; height: 21px; border-radius: 50%; background: var(--rain); border: 3px solid var(--line); }
+  .is-done .timeline__dot { background: var(--green); border-color: var(--green); }
+  .is-now .timeline__dot, .is-next .timeline__dot { background: var(--leaf); border-color: var(--green); box-shadow: 0 0 0 5px var(--leaf-soft); }
+  .is-now, .is-next { }
+
+  @media (min-width: 56rem) {
+    .timeline { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .timeline::before { left: 0; right: 0; top: 9px; bottom: auto; width: auto; height: 3px; }
+    .timeline__item { padding-left: 0; padding-top: 2.5rem; }
+  }
+</style>

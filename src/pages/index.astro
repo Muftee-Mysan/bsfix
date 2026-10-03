@@ -1,0 +1,160 @@
+---
+import { u } from '../config';
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import HeroSequence from '../components/HeroSequence.astro';
+import UnitIllustration from '../components/UnitIllustration.astro';
+import Progress from '../components/Progress.astro';
+import Recognition from '../components/Recognition.astro';
+import Y4CBlock from '../components/Y4CBlock.astro';
+import teamPhoto from '../assets/photos/team-site-visit.jpeg';
+---
+
+<Base
+  title="BSFix"
+  description="BSFix turns food waste into compost and animal feed right where it's thrown away, using Black Soldier Fly larvae. A youth-led climate project in Colombo, Sri Lanka."
+>
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div class="hero__text">
+        <h1>We turn food waste into compost and animal feed, right where it’s thrown away.</h1>
+        <p class="lede">
+          BSFix units use Black Soldier Fly larvae to break down food waste on site at hotels, canteens, markets and institutions in and around Colombo.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href={u('/host-a-unit/')}>Host a BSFix unit</a>
+          <a class="btn btn--secondary" href={u('/how-it-works/')}>How it works</a>
+        </div>
+      </div>
+      <HeroSequence />
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="problem">
+    <div class="wrap">
+      <h2 id="problem">The problem in Colombo</h2>
+      <div class="facts">
+        <div class="fact">
+          <p class="fact__num">420–450 tonnes</p>
+          <p>of waste collected by Colombo Municipal Council every day.</p>
+          <p class="fact__src">Source: <a href="https://adaderana.lk/news/104535/colombos-garbage-surges-during-festive-season" rel="noopener">Ada Derana, December 2024</a></p>
+        </div>
+        <div class="fact">
+          <p class="fact__num">56%</p>
+          <p>of municipal waste in Sri Lanka is food waste on average — nearly 4,000 tonnes a day nationally.</p>
+          <p class="fact__src">Source: <a href="https://archive.iwmi.org/wle/node/19638/" rel="noopener">IWMI</a></p>
+        </div>
+      </div>
+      <p class="facts__after">
+        Every kilogram broken down where it is produced is a kilogram that doesn’t need to be trucked to landfill or an open dump.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="unit">
+    <div class="wrap split">
+      <div>
+        <h2 id="unit">How a BSFix unit works</h2>
+        <p>
+          A BSFix unit is a compact, low-tech box with four compartments. Food waste goes in. Black Soldier Fly larvae eat it, and in about two weeks it becomes compost, plus grown larvae that are rich in protein.
+        </p>
+        <p>
+          Units are built so a labourer with no prior training can load, harvest, clean and move them. We train your staff and visit to service the unit.
+        </p>
+        <p><a href={u('/how-it-works/')}>Read how it works, and answers about smell and flies</a></p>
+      </div>
+      <UnitIllustration />
+    </div>
+  </section>
+
+  <section class="section section--leaf" aria-labelledby="who">
+    <div class="wrap">
+      <h2 id="who">Who it’s for</h2>
+      <div class="who">
+        <div>
+          <h3>Hotels and canteens</h3>
+          <p>Handle kitchen waste on site, get compost for your gardens, and a monthly impact report you can share with guests and in sustainability reporting.</p>
+          <a href={u('/host-a-unit/')}>Host a unit</a>
+        </div>
+        <div>
+          <h3>Markets and institutions</h3>
+          <p>Councils, markets, universities and offices: cut what goes to the dump, with a unit your own staff can run after our training.</p>
+          <a href={u('/host-a-unit/')}>Ask about a site visit</a>
+        </div>
+        <div>
+          <h3>Farmers</h3>
+          <p>Chicken and fish farmers near Colombo: we are looking for farms to receive and test larvae as a protein-rich supplementary feed.</p>
+          <a href={u('/farmers/')}>Larvae for your farm</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="progress">
+    <div class="wrap">
+      <h2 id="progress">Progress</h2>
+      <Progress />
+      <p><a href={u('/project/')}>See the full project timeline</a></p>
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="team">
+    <div class="wrap split split--wide-left">
+      <Picture
+        src={teamPhoto}
+        alt="Five members of the BSFix team and collaborators standing on the frames of open composting beds under a shed roof, two of them holding compost in their hands."
+        formats={['avif', 'webp']}
+        widths={[480, 800]}
+        sizes="(min-width: 52rem) 40rem, 100vw"
+        loading="lazy"
+        class="team-photo"
+      />
+      <div>
+        <h2 id="team">Built by final-year undergraduates</h2>
+        <p>
+          BSFix is led by Mandu Demitha Manawadu, with Muftee Mysan (tech) and Chamudi Gamage (business). We want BSFix to grow into a startup that runs an on-site food-waste service and supplies larvae to farmers.
+        </p>
+        <p class="todo-block">TODO: confirm photo caption — who is pictured and where.</p>
+        <p><a href={u('/project/')}>Meet the team and see our recognition</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="recognition">
+    <div class="wrap">
+      <h2 id="recognition">Recognition so far</h2>
+      <p class="lede">Our team’s work on BSFix has been recognised at university and national competitions.</p>
+      <Recognition />
+    </div>
+  </section>
+
+  <section class="section section--leaf" aria-labelledby="y4c">
+    <div class="wrap">
+      <h2 id="y4c" class="visually-hidden">Supported by Youth4Climate</h2>
+      <Y4CBlock />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding-block: 2rem 3rem; }
+  .hero__grid { display: grid; gap: 2rem; align-items: center; }
+  @media (min-width: 60rem) {
+    .hero { padding-block: 4rem 5rem; }
+    .hero__grid { grid-template-columns: 1.05fr 1fr; gap: 3.5rem; }
+  }
+  .hero h1 { max-width: 18ch; }
+
+  .facts { display: grid; gap: 2rem; margin-top: 1.5rem; }
+  @media (min-width: 44rem) { .facts { grid-template-columns: 1fr 1fr; gap: 3rem; } }
+  .fact { border-left: 4px solid var(--green); padding-left: 1.1rem; }
+  .fact__num { font-family: var(--font-head); font-size: clamp(2.2rem, 1.6rem + 3vw, 3.4rem); font-weight: 700; line-height: 1; color: var(--green-dark); margin-bottom: 0.4rem; }
+  .fact p { margin-bottom: 0.4rem; }
+  .fact__src { font-size: 0.875rem; color: var(--compost); }
+  .facts__after { margin-top: 2rem; font-size: var(--step-1); }
+
+  .who { display: grid; gap: 2rem; margin-top: 1rem; }
+  @media (min-width: 52rem) { .who { grid-template-columns: repeat(3, 1fr); gap: 0; } .who > div { padding: 0 1.75rem; border-left: 1px solid #b9cf9b; } .who > div:first-child { padding-left: 0; border-left: 0; } }
+
+  :global(.team-photo) { width: 100%; height: auto; border-radius: var(--radius); }
+</style>

@@ -1,0 +1,56 @@
+---
+import { Picture } from 'astro:assets';
+import spark from '../assets/photos/award-spark.jpeg';
+import sliot from '../assets/photos/award-sliot-2025.jpeg';
+import iese from '../assets/photos/award-iese-grant.jpeg';
+
+const awards = [
+  {
+    img: spark,
+    alt: 'SPARK competition announcement: Team Zypher named champions for BSFix, a Black Soldier Fly farming unit, shown receiving the trophy and prize board.',
+    title: 'SPARK — Champions',
+    text: 'Our BSF farming unit, “designed for anyone to easily harness the powerful benefits of Black Soldier Fly cultivation”, was named champion at SPARK, presented with Electronic and Telecommunication Engineering (ENTC).',
+    todo: 'TODO: add year',
+  },
+  {
+    img: sliot,
+    alt: 'Team Zypher on stage at the SLIoT Challenge 2025 Grand Finale holding the trophy and a University Category Champions board for LKR 150,000.',
+    title: 'SLIoT Challenge 2025 — University category champions',
+    text: 'Team Zypher from the University of Moratuwa won the Sri Lanka IoT Challenge 2025 university category (LKR 150,000).',
+    todo: 'TODO: confirm this award was for BSFix',
+  },
+  {
+    img: iese,
+    alt: 'Team members holding an IESE Grant Scheme winners board for Rs. 500,000, standing beside a faculty representative.',
+    title: 'IESE Grant Scheme — Winners',
+    text: 'A Rs. 500,000 grant from the IESE Grant Scheme, organised by the Society for Innovation Engineering and Entrepreneurship, Faculty of Engineering.',
+    todo: 'TODO: confirm this grant was for BSFix and add year',
+  },
+];
+---
+
+<ul class="awards">
+  {awards.map((a) => (
+    <li>
+      <Picture
+        src={a.img}
+        alt={a.alt}
+        formats={['avif', 'webp']}
+        widths={[360, 560]}
+        sizes="(min-width: 56rem) 22rem, 100vw"
+        loading="lazy"
+        class="awards__img"
+      />
+      <h3>{a.title}</h3>
+      <p>{a.text}</p>
+      {a.todo && <span class="todo">{a.todo}</span>}
+    </li>
+  ))}
+</ul>
+
+<style>
+  .awards { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: 2.25rem; max-width: none; }
+  @media (min-width: 56rem) { .awards { grid-template-columns: repeat(3, 1fr); gap: 2rem; } }
+  .awards :global(.awards__img) { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 40%; border-radius: var(--radius); margin-bottom: 1rem; }
+  .awards p { font-size: 0.975rem; margin-bottom: 0.5rem; }
+</style>

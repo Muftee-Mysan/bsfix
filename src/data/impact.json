@@ -1,0 +1,59 @@
+{
+  "updated": "2026-10-03",
+  "metrics": [
+    {
+      "id": "kgDiverted",
+      "label": "Organic waste diverted from landfill and open dumps",
+      "unit": "kg",
+      "value": 0,
+      "target": 5000,
+      "targetNote": "by August 2028",
+      "status": "target"
+    },
+    {
+      "id": "peopleReached",
+      "label": "People reached through awareness sessions",
+      "unit": "people",
+      "value": 0,
+      "target": 200,
+      "targetNote": "200+",
+      "status": "target"
+    },
+    {
+      "id": "sessionsHeld",
+      "label": "Awareness sessions held",
+      "unit": "sessions",
+      "value": 0,
+      "target": null,
+      "targetNote": "TODO: confirm target number of sessions",
+      "status": "target"
+    },
+    {
+      "id": "unitsRunning",
+      "label": "Public sites running a BSFix unit",
+      "unit": "sites",
+      "value": 0,
+      "target": 3,
+      "targetNote": "in Phase B, 2028",
+      "status": "target"
+    },
+    {
+      "id": "labourersTrained",
+      "label": "Labourers trained to operate the units",
+      "unit": "people",
+      "value": 0,
+      "target": 6,
+      "targetNote": "around 6",
+      "status": "target"
+    },
+    {
+      "id": "farmsSupplied",
+      "label": "Local chicken or fish farms supplied with larvae",
+      "unit": "farms",
+      "value": 0,
+      "target": 2,
+      "targetNote": "at least 2",
+      "status": "target"
+    }
+  ]
+}

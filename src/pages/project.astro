@@ -1,0 +1,106 @@
+---
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Timeline from '../components/Timeline.astro';
+import Progress from '../components/Progress.astro';
+import Recognition from '../components/Recognition.astro';
+import Y4CBlock from '../components/Y4CBlock.astro';
+import teamPhoto from '../assets/photos/team-site-visit.jpeg';
+
+const team = [
+  { name: 'Mandu Demitha Manawadu', role: 'Project leader' },
+  { name: 'Muftee Mysan', role: 'Tech lead' },
+  { name: 'Chamudi Gamage', role: 'Business lead' },
+];
+const initials = (n: string) => n.split(' ').filter((_, i, a) => i === 0 || i === a.length - 1).map((w) => w[0]).join('');
+---
+
+<Base
+  title="The project"
+  description="BSFix project overview: theory of change, phases from December 2026 to December 2028, targets, team and recognition. Supported by Youth4Climate."
+>
+  <section class="section">
+    <div class="wrap">
+      <h1>The project</h1>
+      <p class="lede">
+        BSFix is a youth-led climate project from Sri Lanka, supported by the Youth4Climate Financial Award 2025. It runs from December 2026 to December 2028 in Colombo and the surrounding Western Province.
+      </p>
+      <p class="toc">
+        If communities use Black Soldier Flies and other nature-inspired solutions for waste, more waste is disposed of sustainably, because there is an effective alternative.
+      </p>
+      <p>
+        After the project, we plan to become a startup that runs an on-site food-waste service for hotels, canteens and institutions, and supplies larvae to farmers.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="timeline">
+    <div class="wrap">
+      <h2 id="timeline">Timeline</h2>
+      <Timeline />
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="targets">
+    <div class="wrap">
+      <h2 id="targets">Targets</h2>
+      <p>Alongside the numbers below, we will run a market survey of 50+ respondents to shape the business plan.</p>
+      <Progress />
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="team">
+    <div class="wrap">
+      <h2 id="team">Team</h2>
+      <p>Three final-year undergraduates.</p>
+      <ul class="team">
+        {team.map((p) => (
+          <li>
+            <span class="avatar" aria-hidden="true">{initials(p.name)}</span>
+            <span>
+              <strong>{p.name}</strong><br />
+              <span class="muted">{p.role}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+      <p class="todo-block">TODO: individual team photos. Initials are shown until the team supplies real photos.</p>
+      <figure class="team-fig">
+        <Picture
+          src={teamPhoto}
+          alt="Five members of the BSFix team and collaborators standing on the frames of open composting beds under a shed roof, two of them holding compost in their hands."
+          formats={['avif', 'webp']}
+          widths={[480, 800, 960]}
+          sizes="(min-width: 60rem) 48rem, 100vw"
+          loading="lazy"
+        />
+        <figcaption><span class="todo">TODO: caption — who is pictured and where</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="recog">
+    <div class="wrap">
+      <h2 id="recog">Recognition</h2>
+      <Recognition />
+    </div>
+  </section>
+
+  <section class="section section--leaf" aria-labelledby="y4c">
+    <div class="wrap">
+      <h2 id="y4c">Supported by Youth4Climate</h2>
+      <Y4CBlock />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .toc { font-family: var(--font-head); font-size: var(--step-2); line-height: 1.25; font-weight: 600; max-width: 30ch; border-left: 5px solid var(--leaf); padding-left: 1.1rem; margin-block: 2rem; color: var(--green-dark); }
+  .team { list-style: none; padding: 0; display: grid; gap: 1.25rem; max-width: none; }
+  @media (min-width: 48rem) { .team { grid-template-columns: repeat(3, 1fr); } }
+  .team li { display: flex; align-items: center; gap: 1rem; }
+  .avatar { flex: none; width: 4rem; height: 4rem; border-radius: 50%; display: grid; place-items: center; background: var(--green); color: var(--white); font: 700 1.3rem var(--font-head); }
+  .team-fig { margin: 2rem 0 0; max-width: 48rem; }
+  .team-fig :global(img) { width: 100%; height: auto; border-radius: var(--radius); }
+  .team-fig figcaption { margin-top: 0.6rem; }
+</style>

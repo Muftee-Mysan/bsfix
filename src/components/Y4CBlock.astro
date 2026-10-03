@@ -1,0 +1,32 @@
+---
+import { site, u, y4cStatement } from '../config';
+
+interface Props { variant?: 'strip' | 'footer' }
+const { variant = 'strip' } = Astro.props;
+---
+
+<div class:list={['y4c', `y4c--${variant}`]}>
+  {site.y4cLogo ? (
+    <img class="y4c__logo" src={u(site.y4cLogo)} alt="Youth4Climate" width="160" height="64" loading="lazy" />
+  ) : (
+    <div class="y4c__placeholder" role="img" aria-label="Youth4Climate logo placeholder">
+      <span>Youth4Climate logo</span>
+      <span class="todo">TODO: official logo files</span>
+    </div>
+  )}
+  <p class="y4c__statement">{y4cStatement}</p>
+</div>
+
+<style>
+  .y4c { display: grid; gap: 1rem; align-items: center; }
+  @media (min-width: 40rem) { .y4c { grid-template-columns: auto 1fr; gap: 1.5rem; } }
+  .y4c__logo { width: 160px; height: auto; }
+  .y4c__placeholder {
+    width: 170px; min-height: 72px; display: grid; place-content: center; gap: 0.3rem; text-align: center;
+    border: 2px dashed currentColor; border-radius: var(--radius); padding: 0.5rem; font-weight: 700; font-size: 0.875rem;
+  }
+  .y4c__placeholder .todo { font-size: 0.75rem; }
+  .y4c__statement { margin: 0; max-width: 60ch; }
+  .y4c--strip .y4c__statement { font-size: var(--step-1); line-height: 1.45; }
+  .y4c--footer .y4c__statement { font-size: 0.9375rem; }
+</style>

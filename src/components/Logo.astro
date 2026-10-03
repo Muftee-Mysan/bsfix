@@ -1,0 +1,27 @@
+---
+// Wordmark: a single wing shape (the BSF's iridescent wing) leaning over a soil line.
+---
+
+<span class="logo">
+  <svg viewBox="0 0 40 32" width="36" height="29" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="wing" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#2C7A8C" />
+        <stop offset="1" stop-color="#1F6B4A" />
+      </linearGradient>
+    </defs>
+    <path d="M6 24 C 8 10, 22 2, 36 4 C 32 16, 20 24, 6 24 Z" fill="url(#wing)" />
+    <path d="M10 22 C 18 16, 26 10, 33 6" stroke="#CFE3B0" stroke-width="1.6" fill="none" stroke-linecap="round" />
+    <rect x="2" y="27" width="36" height="3" rx="1.5" fill="#2A2119" />
+  </svg>
+  <span class="logo__text">BS<span>Fix</span></span>
+</span>
+
+<style>
+  .logo { display: inline-flex; align-items: center; gap: 0.45rem; }
+  .logo__text {
+    font-family: var(--font-head); font-weight: 750; font-size: 1.45rem;
+    letter-spacing: -0.03em; color: var(--soil);
+  }
+  .logo__text span { color: var(--green); }
+</style>

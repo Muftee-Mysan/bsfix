@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+import EnquiryForm from '../components/EnquiryForm.astro';
+import { site } from '../config';
+---
+
+<Base
+  title="Get involved"
+  description="Join a BSFix awareness session or university demonstration, volunteer with the project, or ask about partnering with us in Colombo."
+>
+  <section class="section">
+    <div class="wrap">
+      <h1>Get involved</h1>
+      <p class="lede">
+        Curious what a fly can do about Colombo’s rubbish? Come and see one of our units, help out, or work with us.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="wrap ways">
+      <section aria-labelledby="sessions">
+        <h2 id="sessions">Awareness sessions and demos</h2>
+        <p>
+          We are running awareness sessions and university demonstrations to show how BSF waste treatment works — larvae, compost and all. No, the flies won’t bite.
+        </p>
+        <p><span class="todo">TODO: session and demo dates</span></p>
+        <p>Want a session at your university, school or workplace? <a href="#enquiry">Ask us below</a>.</p>
+      </section>
+      <section aria-labelledby="volunteer">
+        <h2 id="volunteer">Volunteer</h2>
+        <p>
+          Help at demos, talk to people at our public sites, or help with the market survey. Students welcome.
+        </p>
+        <p class="todo-block">TODO: confirm volunteer roles and how to sign up.</p>
+      </section>
+      <section aria-labelledby="partner">
+        <h2 id="partner">Partner with us</h2>
+        <p>
+          Councils, companies, NGOs and universities: if you can help with sites, research, funding or spreading the word, let’s talk.
+        </p>
+        <p><a href={`mailto:${site.email}?subject=${encodeURIComponent('BSFix partnership')}`}>Email us about a partnership</a></p>
+      </section>
+    </div>
+  </section>
+
+  <section class="section" id="enquiry" aria-labelledby="enquiry-h">
+    <div class="wrap">
+      <h2 id="enquiry-h">Send us a message</h2>
+      <p>Tell us whether you want a session, to volunteer, or to partner.</p>
+      <EnquiryForm kind="general" submitLabel="Send message" sentLabel="Message sent" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .ways { display: grid; gap: 2.5rem; }
+  @media (min-width: 56rem) { .ways { grid-template-columns: repeat(3, 1fr); } }
+</style>

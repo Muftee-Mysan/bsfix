@@ -1,0 +1,87 @@
+---
+import { u } from '../config';
+import Base from '../layouts/Base.astro';
+import EnquiryForm from '../components/EnquiryForm.astro';
+import WhatsAppLink from '../components/WhatsAppLink.astro';
+---
+
+<Base
+  title="Host a BSFix unit"
+  description="Host a BSFix food-waste unit at your hotel, canteen, market, university or institution in Colombo. We provide the unit, training, monthly service visits and an impact report."
+>
+  <section class="section">
+    <div class="wrap">
+      <h1>Host a BSFix unit</h1>
+      <p class="lede">
+        In 2028 we are placing units at three public sites in and around Colombo, each for at least eight weeks. If your site produces food waste every day, we would like to hear from you.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="#enquiry">Fill in the enquiry form</a>
+        <WhatsAppLink text="Hi BSFix, I'd like to ask about hosting a unit." label="Ask on WhatsApp" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="deal">
+    <div class="wrap">
+      <h2 id="deal">What hosting involves</h2>
+      <div class="deal">
+        <div>
+          <h3>Good fit if you are</h3>
+          <ul>
+            <li>a hotel, canteen, market, university or institution in or near Colombo</li>
+            <li>producing food waste every day</li>
+            <li>willing to try something new and tell us honestly how it went</li>
+          </ul>
+        </div>
+        <div>
+          <h3>You provide</h3>
+          <ul>
+            <li>space for the unit (about 5 ft × 5 ft, ideally covered)</li>
+            <li>your daily food waste</li>
+            <li>one contact person on site</li>
+          </ul>
+        </div>
+        <div>
+          <h3>We provide</h3>
+          <ul>
+            <li>the BSFix unit</li>
+            <li>hands-on training for your staff</li>
+            <li>monthly service visits</li>
+            <li>a monthly impact report: how much waste the unit handled</li>
+          </ul>
+        </div>
+      </div>
+      <p class="muted">Pricing is set after our 2027 pilot. Hosting a unit at one of our 2028 public sites is part of the Youth4Climate-supported project.</p>
+      <p class="todo-block">TODO: confirm with team whether 2028 public-site hosting is free of charge for the host, and update the line above.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="enquiry-h" id="enquiry">
+    <div class="wrap split split--wide-left">
+      <div>
+        <h2 id="enquiry-h">Tell us about your site</h2>
+        <p>Takes about two minutes. We will reply by phone, WhatsApp or email, whichever you prefer.</p>
+        <EnquiryForm kind="host" />
+      </div>
+      <aside class="aside">
+        <h2 class="aside__h">Prefer to talk?</h2>
+        <p>Message us on WhatsApp or email <a href="mailto:demithamanawadu@gmail.com">demithamanawadu@gmail.com</a>.</p>
+        <WhatsAppLink text="Hi BSFix, I'd like to ask about hosting a unit." />
+        <h2 class="aside__h">Not sure yet?</h2>
+        <p><a href={u('/how-it-works/#faq')}>Read answers about smell, flies, rain and space</a>.</p>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .deal { display: grid; gap: 1.75rem; margin-bottom: 1.5rem; }
+  @media (min-width: 52rem) { .deal { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
+  .deal ul { padding-left: 1.2rem; }
+  .deal li { margin-bottom: 0.35rem; }
+  .deal > div:last-child { background: var(--leaf-soft); padding: 1.1rem 1.25rem; border-radius: var(--radius); }
+  .aside { align-self: start; border-left: 4px solid var(--teal); padding-left: 1.25rem; }
+  .aside__h { font-size: var(--step-1); margin-top: 1.5rem; }
+  .aside__h:first-child { margin-top: 0; }
+</style>

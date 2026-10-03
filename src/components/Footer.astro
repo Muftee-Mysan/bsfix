@@ -1,0 +1,58 @@
+---
+import { u } from '../config';
+import Y4CBlock from './Y4CBlock.astro';
+import { site, whatsappHref } from '../config';
+const year = new Date().getFullYear();
+const wa = whatsappHref('Hi BSFix, ');
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <Y4CBlock variant="footer" />
+
+    <div class="site-footer__cols">
+      <div>
+        <h2 class="site-footer__h">Contact</h2>
+        <ul>
+          <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          <li>{wa ? <a href={wa} rel="noopener">WhatsApp</a> : <span class="todo">TODO: WhatsApp number</span>}</li>
+          <li>
+            {site.instagramHandle
+              ? <a href={`https://www.instagram.com/${site.instagramHandle}/`} rel="noopener">Instagram @{site.instagramHandle}</a>
+              : <span>Instagram <span class="todo">TODO: handle — launches Dec 2026</span></span>}
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="site-footer__h">Site</h2>
+        <ul>
+          <li><a href={u('/host-a-unit/')}>Host a unit</a></li>
+          <li><a href={u('/how-it-works/')}>How it works</a></li>
+          <li><a href={u('/farmers/')}>For farmers</a></li>
+          <li><a href={u('/project/')}>Project</a></li>
+          <li><a href={u('/updates/')}>Updates</a></li>
+          <li><a href={u('/get-involved/')}>Get involved</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="site-footer__h">Where</h2>
+        <p>Colombo and surrounding areas, Western Province, Sri Lanka</p>
+      </div>
+    </div>
+
+    <p class="site-footer__copy">© {year} BSFix. A youth-led climate project from Sri Lanka. This site uses no tracking cookies.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer { background: var(--soil); color: #e9e4dc; padding-block: 3rem 2rem; }
+  .site-footer a { color: var(--leaf); }
+  .site-footer .todo { background: #4a3b2d; color: #ffd98a; border-color: #ffd98a; }
+  .site-footer :global(.y4c__placeholder .todo) { background: #4a3b2d; color: #ffd98a; border-color: #ffd98a; }
+  .site-footer__cols { display: grid; gap: 1.5rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid #4a3b2d; }
+  @media (min-width: 40rem) { .site-footer__cols { grid-template-columns: repeat(3, 1fr); } }
+  .site-footer__h { font-size: 1rem; font-family: var(--font-body); font-weight: 700; color: var(--white); margin-bottom: 0.5rem; letter-spacing: 0; }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { padding: 0.25rem 0; }
+  .site-footer__copy { margin-top: 2.5rem; font-size: 0.875rem; color: #b9b0a4; }
+</style>

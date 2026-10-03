@@ -1,0 +1,61 @@
+---
+import impact from '../data/impact.json';
+import { phases, site } from '../config';
+
+const fmt = (n: number) => n.toLocaleString('en-GB');
+const current = phases.find((p) => p.id === site.currentPhase);
+const updated = new Date(impact.updated).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<div class="progress">
+  <p class="progress__phase">
+    {current
+      ? <>Now: <strong>{current.name}</strong> ({current.dates})</>
+      : <>Project starts <strong>December 2026</strong> with the design-and-build phase.</>}
+  </p>
+
+  <ul class="progress__list">
+    {impact.metrics.map((m) => {
+      const pct = m.target ? Math.min(100, (m.value / m.target) * 100) : 0;
+      const measured = m.status === 'measured';
+      return (
+        <li class="metric">
+          <span class="metric__label">{m.label}</span>
+          <span class="metric__nums">
+            <span class="metric__value">{fmt(m.value)}</span>
+            {m.target
+              ? <span class="metric__target"> of {fmt(m.target)} {m.unit}</span>
+              : <span class="metric__target"> {m.unit}</span>}
+            <span class:list={['tag', measured ? 'tag--measured' : 'tag--target']}>{measured ? 'Measured' : 'Target'}</span>
+          </span>
+          {m.target ? (
+            <span class="metric__bar" role="img" aria-label={`${fmt(m.value)} of a target of ${fmt(m.target)} ${m.unit}`}>
+              <span style={`width:${pct}%`}></span>
+            </span>
+          ) : null}
+          {m.targetNote.startsWith('TODO')
+            ? <span class="todo">{m.targetNote}</span>
+            : <span class="metric__note">Target: {m.targetNote}</span>}
+        </li>
+      );
+    })}
+  </ul>
+  <p class="small muted">
+    All figures start at zero. Numbers marked “Target” are what we are aiming for, not results. We will switch each one to “Measured” as real results come in. Last updated {updated}.
+  </p>
+</div>
+
+<style>
+  .progress__phase { font-size: var(--step-1); }
+  .progress__list { list-style: none; padding: 0; margin: 1.5rem 0; display: grid; gap: 0; max-width: none; }
+  @media (min-width: 44rem) { .progress__list { grid-template-columns: 1fr 1fr; column-gap: 3rem; } }
+  .metric { display: grid; gap: 0.35rem; padding: 1rem 0; border-top: 1px solid var(--line); }
+  .metric__label { font-weight: 700; }
+  .metric__nums { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.4rem; }
+  .metric__value { font-family: var(--font-head); font-size: 2rem; font-weight: 700; line-height: 1; }
+  .metric__target { color: var(--compost); }
+  .metric__bar { display: block; height: 8px; border-radius: 4px; background: var(--leaf-soft); border: 1px solid var(--leaf); overflow: hidden; }
+  .metric__bar span { display: block; height: 100%; background: var(--green); }
+  .metric__note { font-size: 0.9375rem; color: var(--compost); }
+  .metric .todo { justify-self: start; }
+</style>

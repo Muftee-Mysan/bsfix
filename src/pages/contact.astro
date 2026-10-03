@@ -1,0 +1,48 @@
+---
+import { u } from '../config';
+import Base from '../layouts/Base.astro';
+import WhatsAppLink from '../components/WhatsAppLink.astro';
+import { site } from '../config';
+---
+
+<Base title="Contact" description="Contact the BSFix team by email, WhatsApp or Instagram. Colombo, Sri Lanka.">
+  <section class="section">
+    <div class="wrap">
+      <h1>Contact</h1>
+      <p class="lede">The quickest way to reach us is WhatsApp or email.</p>
+
+      <dl class="contact">
+        <div>
+          <dt>Email</dt>
+          <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+        </div>
+        <div>
+          <dt>WhatsApp</dt>
+          <dd><WhatsAppLink /></dd>
+        </div>
+        <div>
+          <dt>Instagram</dt>
+          <dd>
+            {site.instagramHandle
+              ? <a href={`https://www.instagram.com/${site.instagramHandle}/`} rel="noopener">@{site.instagramHandle}</a>
+              : <span class="todo">TODO: handle — account launches December 2026</span>}
+          </dd>
+        </div>
+        <div>
+          <dt>Where we work</dt>
+          <dd>Colombo and surrounding areas, Western Province, Sri Lanka</dd>
+        </div>
+      </dl>
+
+      <p>Want a unit at your site? Use the <a href={u('/host-a-unit/#enquiry')}>hosting enquiry form</a>. Farmers: <a href={u('/farmers/')}>register your farm</a>.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contact { display: grid; gap: 0; margin: 2rem 0; max-width: 40rem; }
+  .contact > div { display: grid; gap: 0.25rem; padding: 1rem 0; border-top: 1px solid var(--line); }
+  @media (min-width: 36rem) { .contact > div { grid-template-columns: 10rem 1fr; align-items: center; } }
+  dt { font-weight: 700; }
+  dd { margin: 0; font-size: var(--step-1); }
+</style>
