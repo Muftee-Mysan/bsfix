@@ -43,7 +43,7 @@ The build output in `dist/` is plain static files. Before the first deploy, set 
 
 **Vercel:** New project → import the repository → root directory `Webpage`. Vercel detects Astro automatically.
 
-**GitHub Pages:** use the official [`withastro/action`](https://github.com/withastro/action) workflow with `path: ./Webpage`. If the site is served from `https://<user>.github.io/<repo>/`, also set `base: '/<repo>'` in `astro.config.mjs`.
+**GitHub Pages (set up):** the workflow in `.github/workflows/deploy.yml` builds and deploys on every push to `main`. In the repository, go to Settings → Pages → Source and choose **GitHub Actions** once. The workflow sets the site URL and the `/<repo>/` base path automatically; in code, always link internally with `u('/path/')` from `src/config.ts` so links keep working under that base path.
 
 ## Branding rules
 
