@@ -6,13 +6,9 @@ import Progress from '../components/Progress.astro';
 import Recognition from '../components/Recognition.astro';
 import Y4CBlock from '../components/Y4CBlock.astro';
 import teamPhoto from '../assets/photos/team-site-visit.jpeg';
-
-const team = [
-  { name: 'Mandu Demitha Manawadu', role: 'Project leader' },
-  { name: 'Muftee Mysan', role: 'Tech lead' },
-  { name: 'Chamudi Gamage', role: 'Business lead' },
-];
-const initials = (n: string) => n.split(' ').filter((_, i, a) => i === 0 || i === a.length - 1).map((w) => w[0]).join('');
+import monitorPhoto from '../assets/photos/larvae-monitoring-system.jpeg';
+import cagePhoto from '../assets/photos/mesh-cage-on-beds.jpeg';
+import { team } from '../data/team';
 ---
 
 <Base
@@ -52,19 +48,26 @@ const initials = (n: string) => n.split(' ').filter((_, i, a) => i === 0 || i ==
   <section class="section section--white" aria-labelledby="team">
     <div class="wrap">
       <h2 id="team">Team</h2>
-      <p>Three final-year undergraduates.</p>
+      <p>Five final-year undergraduates, who compete together as Team Zypher.</p>
       <ul class="team">
         {team.map((p) => (
           <li>
-            <span class="avatar" aria-hidden="true">{initials(p.name)}</span>
-            <span>
-              <strong>{p.name}</strong><br />
-              <span class="muted">{p.role}</span>
-            </span>
+            <Picture
+              src={p.photo}
+              alt={`Portrait of ${p.name}`}
+              formats={['avif', 'webp']}
+              widths={[200, 400]}
+              sizes="(min-width: 60rem) 11rem, 45vw"
+              loading="lazy"
+              class="team__photo"
+              style={`object-position: ${p.focus}`}
+            />
+            <strong>{p.name}</strong>
+            {p.role ? <span class="muted">{p.role}</span> : <span class="todo">TODO: role</span>}
+            {p.todo && <span class="todo">{p.todo}</span>}
           </li>
         ))}
       </ul>
-      <p class="todo-block">TODO: individual team photos. Initials are shown until the team supplies real photos.</p>
       <figure class="team-fig">
         <Picture
           src={teamPhoto}
@@ -79,7 +82,38 @@ const initials = (n: string) => n.split(' ').filter((_, i, a) => i === 0 || i ==
     </div>
   </section>
 
-  <section class="section" aria-labelledby="recog">
+  <section class="section" aria-labelledby="built">
+    <div class="wrap">
+      <h2 id="built">What we have built so far</h2>
+      <p>Before the Youth4Climate project starts, we have been testing ideas on small prototypes and learning from an existing Black Soldier Fly composting site.</p>
+      <div class="built">
+        <figure>
+          <Picture
+            src={monitorPhoto}
+            alt="A prototype with a touchscreen reading 'Larvae Monitoring System – Start Larvae Monitoring', mounted above a tray holding a tub of larvae and compost."
+            formats={['avif', 'webp']}
+            widths={[400, 700]}
+            sizes="(min-width: 48rem) 24rem, 100vw"
+            loading="lazy"
+          />
+          <figcaption>Our larvae monitoring system prototype: a touchscreen unit that watches a tray of feeding larvae.</figcaption>
+        </figure>
+        <figure>
+          <Picture
+            src={cagePhoto}
+            alt="A wooden-framed cage with green mesh sides on wheels, standing on open composting beds under a shed roof, with coconut palms outside."
+            formats={['avif', 'webp']}
+            widths={[400, 700]}
+            sizes="(min-width: 48rem) 24rem, 100vw"
+            loading="lazy"
+          />
+          <figcaption>A mesh-sided prototype on wheels, tried out on the composting beds during a site visit. <span class="todo">TODO: confirm caption</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="recog">
     <div class="wrap">
       <h2 id="recog">Recognition</h2>
       <Recognition />
@@ -96,10 +130,16 @@ const initials = (n: string) => n.split(' ').filter((_, i, a) => i === 0 || i ==
 
 <style>
   .toc { font-family: var(--font-head); font-size: var(--step-2); line-height: 1.25; font-weight: 600; max-width: 30ch; border-left: 5px solid var(--leaf); padding-left: 1.1rem; margin-block: 2rem; color: var(--green-dark); }
-  .team { list-style: none; padding: 0; display: grid; gap: 1.25rem; max-width: none; }
-  @media (min-width: 48rem) { .team { grid-template-columns: repeat(3, 1fr); } }
-  .team li { display: flex; align-items: center; gap: 1rem; }
-  .avatar { flex: none; width: 4rem; height: 4rem; border-radius: 50%; display: grid; place-items: center; background: var(--green); color: var(--white); font: 700 1.3rem var(--font-head); }
+  .team { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.75rem 1.25rem; max-width: none; }
+  @media (min-width: 40rem) { .team { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 60rem) { .team { grid-template-columns: repeat(5, 1fr); } }
+  .team li { display: flex; flex-direction: column; gap: 0.2rem; align-items: flex-start; }
+  .team :global(.team__photo) { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); margin-bottom: 0.6rem; background: var(--leaf-soft); }
+  .built { display: grid; gap: 2rem; margin-top: 1.5rem; }
+  @media (min-width: 48rem) { .built { grid-template-columns: 1fr 1fr; } }
+  .built figure { margin: 0; }
+  .built :global(img) { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); }
+  .built figcaption { margin-top: 0.6rem; font-size: 0.975rem; }
   .team-fig { margin: 2rem 0 0; max-width: 48rem; }
   .team-fig :global(img) { width: 100%; height: auto; border-radius: var(--radius); }
   .team-fig figcaption { margin-top: 0.6rem; }

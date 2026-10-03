@@ -2,6 +2,8 @@
 import Base from '../layouts/Base.astro';
 import EnquiryForm from '../components/EnquiryForm.astro';
 import { site } from '../config';
+import { Picture } from 'astro:assets';
+import standPhoto from '../assets/photos/demo-stand.jpeg';
 ---
 
 <Base
@@ -14,6 +16,10 @@ import { site } from '../config';
       <p class="lede">
         Curious what a fly can do about Colombo’s rubbish? Come and see one of our units, help out, or work with us.
       </p>
+      <figure class="stand">
+        <Picture src={standPhoto} alt="An exhibition table labelled Zypher with three laptops, one showing a BSF life cycle slide, between two wooden-framed mesh units, in an empty hall." formats={['avif', 'webp']} widths={[480, 800, 1100]} sizes="(min-width: 60rem) 48rem, 100vw" loading="lazy" />
+        <figcaption>Our demo stand, with prototype units and the BSF life cycle on screen. <span class="todo">TODO: name the event</span></figcaption>
+      </figure>
     </div>
   </section>
 
@@ -55,5 +61,8 @@ import { site } from '../config';
 
 <style>
   .ways { display: grid; gap: 2.5rem; }
+  .stand { margin: 2rem 0 0; max-width: 48rem; }
+  .stand :global(img) { width: 100%; height: auto; border-radius: var(--radius); }
+  .stand figcaption { margin-top: 0.6rem; font-size: 0.975rem; color: var(--compost); }
   @media (min-width: 56rem) { .ways { grid-template-columns: repeat(3, 1fr); } }
 </style>

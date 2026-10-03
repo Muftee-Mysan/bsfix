@@ -2,6 +2,9 @@
 import Base from '../layouts/Base.astro';
 import EnquiryForm from '../components/EnquiryForm.astro';
 import WhatsAppLink from '../components/WhatsAppLink.astro';
+import { Picture } from 'astro:assets';
+import mealPhoto from '../assets/photos/bsfl-meal.jpeg';
+import poultryPhoto from '../assets/photos/poultry-farm.jpeg';
 ---
 
 <Base
@@ -18,6 +21,16 @@ import WhatsAppLink from '../components/WhatsAppLink.astro';
         <p>
           During the project we are looking for farms near Colombo to receive larvae and test them as feed. Tell us about your farm and we will contact you when larvae are available.
         </p>
+        <div class="farm-photos">
+          <figure>
+            <Picture src={poultryPhoto} style="object-position: 75% 70%" alt="White and black turkeys reaching through a wire-mesh cage to feed from a long metal trough." formats={['avif', 'webp']} widths={[320, 560]} sizes="(min-width: 60rem) 16rem, 50vw" loading="lazy" />
+            <figcaption>Poultry at a farm we visited. <span class="todo">TODO: confirm where</span></figcaption>
+          </figure>
+          <figure>
+            <Picture src={mealPhoto} alt="A hand holding a plastic tub labelled 'BSFL meal' in marker pen, filled with light brown powder." formats={['avif', 'webp']} widths={[320, 560]} sizes="(min-width: 60rem) 16rem, 50vw" loading="lazy" />
+            <figcaption>Larvae can also be dried and ground into meal.</figcaption>
+          </figure>
+        </div>
         <h2>What we ask of you</h2>
         <ul>
           <li>Try the larvae with your animals.</li>
@@ -36,5 +49,9 @@ import WhatsAppLink from '../components/WhatsAppLink.astro';
 
 <style>
   ul { padding-left: 1.2rem; }
+  .farm-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-block: 1.5rem 2rem; }
+  .farm-photos figure { margin: 0; }
+  .farm-photos :global(img) { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); }
+  .farm-photos figcaption { margin-top: 0.5rem; font-size: 0.925rem; color: var(--compost); }
   .form-box { background: var(--white); padding: 1.25rem; border-radius: var(--radius); border: 1px solid var(--line); align-self: start; }
 </style>

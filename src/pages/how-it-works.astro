@@ -1,7 +1,10 @@
 ---
 import { u } from '../config';
 import Base from '../layouts/Base.astro';
+import { Picture } from 'astro:assets';
 import UnitIllustration from '../components/UnitIllustration.astro';
+import compostPhoto from '../assets/photos/compost-in-hand.jpeg';
+import larvaePhoto from '../assets/photos/larvae-in-hand.jpeg';
 
 const faqs = [
   {
@@ -103,6 +106,16 @@ const faqs = [
           <span class="todo">TODO: confirm this list with the team</span>
         </div>
       </div>
+      <div class="outputs">
+        <figure>
+          <Picture src={compostPhoto} alt="A hand letting dark, crumbly compost fall back into a blue tray, next to a bowl of food scraps." formats={['avif', 'webp']} widths={[320, 560]} sizes="(min-width: 48rem) 20rem, 100vw" loading="lazy" />
+          <figcaption>Finished compost: dark, crumbly and ready for the garden.</figcaption>
+        </figure>
+        <figure>
+          <Picture src={larvaePhoto} alt="An open hand holding a small pile of dark, fully grown Black Soldier Fly larvae above a composting bed." formats={['avif', 'webp']} widths={[320, 560]} sizes="(min-width: 48rem) 20rem, 100vw" loading="lazy" />
+          <figcaption>Fully grown larvae, harvested for farm feed.</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -153,6 +166,10 @@ const faqs = [
   @media (min-width: 48rem) { .inout { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
   .inout > div { border-top: 4px solid var(--green); padding-top: 1rem; }
   .inout > div:last-child { border-top-color: var(--compost); }
+  .outputs { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; max-width: 42rem; }
+  .outputs figure { margin: 0; }
+  .outputs :global(img) { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius); }
+  .outputs figcaption { margin-top: 0.5rem; font-size: 0.925rem; color: var(--compost); }
 
   .faq { max-width: 48rem; border-top: 1px solid var(--line); }
   .faq details { border-bottom: 1px solid var(--line); }

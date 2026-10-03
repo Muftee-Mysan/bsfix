@@ -67,7 +67,17 @@ Supported by Youth4Climate
 
 ## Photos
 
-The team supplied five photos. Four are used (team site visit, SLIoT 2025 stage photo, SPARK announcement, IESE Grant Scheme). The SLIoT poster duplicates the stage photo and is kept in `src/assets/photos/` but not shown. All photos go through `astro:assets` and ship as AVIF/WebP with `srcset`, lazy-loaded below the fold.
+The team supplied five photos at first. Four are used (team site visit, SLIoT 2025 stage photo, SPARK announcement, IESE Grant Scheme). The SLIoT poster duplicates the stage photo and is kept in `src/assets/photos/` but not shown.
+
+A second batch added team portraits and process photos:
+
+- **Team portraits** (all five, `src/assets/photos/team/`) on the Project page, cropped to 4:5.
+- **Compost and grown larvae in hand** — How it works, in “What comes out”, as two small square photos. This is the one place larvae appear as a photo, small and next to the explanation, as the brief allows.
+- **Larvae monitoring system and mesh-cage prototype** — Project, “What we have built so far”.
+- **Poultry at a farm and a tub of BSFL meal** — For farmers.
+- **Zypher demo stand** — Get involved.
+
+Not used: close-ups of masses of larvae, eggs and pupae in tubs (too much for a general audience); blurry shots; a two-picture collage of people who are not the team (looks like stock); the two videos (no autoplay video, and too heavy for mobile data). All photos go through `astro:assets` and ship as AVIF/WebP with `srcset`, lazy-loaded below the fold.
 
 ## Config
 

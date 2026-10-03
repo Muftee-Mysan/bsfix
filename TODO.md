@@ -28,7 +28,10 @@ Every item below shows on the live site as a dashed yellow “TODO” box until 
 ## Photos
 
 - [ ] **Team photo caption** (Home and Project) — who is pictured in `team-site-visit.jpeg`, and where.
-- [ ] **Individual team photos** (Project) — initials are shown until then. No stock photos or generated faces.
+- [ ] **Lithira and Rusiru** (Project, `src/data/team.ts`) — full names and roles.
+- [ ] **Mesh-cage prototype caption** (Project, “What we have built so far”) — confirm what the wheeled mesh unit on the composting beds is.
+- [ ] **Poultry photo** (For farmers) — where it was taken.
+- [ ] **Demo stand photo** (Get involved) — name the event.
 - [ ] **SPARK award** — add the year.
 - [ ] **SLIoT Challenge 2025** — confirm this award was for BSFix (the photo says Team Zypher, University of Moratuwa).
 - [ ] **IESE Grant Scheme** — confirm this grant was for BSFix and add the year.
